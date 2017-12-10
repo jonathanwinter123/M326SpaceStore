@@ -15,7 +15,7 @@ namespace SpaceStorium
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                url: "",
                 defaults: new
                               {
                                   controller = "ProductOverview",
@@ -24,8 +24,8 @@ namespace SpaceStorium
                               });
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
+                name: "Detail",
+                url: "Detail/{id}",
                 defaults: new { controller = "ProductDetail", action = "ProductDetail", id = UrlParameter.Optional }
             );
         }
