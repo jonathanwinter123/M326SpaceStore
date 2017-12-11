@@ -16,20 +16,8 @@ namespace SpaceStorium.Controllers
     {
         public ActionResult ProductOverview()
         {
-            this.Products = this.GetProducts();
-            return this.View(this.Products);
-        }
-
-        public List<Product> Products { get; set; }
-
-        public List<Product> GetProducts()
-        {
-            string filePath = System.Web.HttpContext.Current.Request.PhysicalApplicationPath;
-            using (StreamReader streamReader = new StreamReader(filePath + @"\App_Data\data.json"))
-            {
-                string json = streamReader.ReadToEnd();
-                return JsonConvert.DeserializeObject<List<Product>>(json);
-            }
+            ProductFactory productFactory = new ProductFactory(@"\App_Data\data.json");
+            return this.View(productFactory.GetAllProducts());
         }
     }
 }

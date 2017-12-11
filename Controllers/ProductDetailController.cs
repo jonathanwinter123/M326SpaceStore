@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace SpaceStorium.Controllers
+﻿namespace SpaceStorium.Controllers
 {
+    using System.Web.Mvc;
+
     public class ProductDetailController : Controller
     {
         // GET: ProductDetail
-        public ActionResult ProductDetail()
+        public ActionResult ProductDetail(int id)
         {
-            return this.View();
+            ProductFactory productFactory = new ProductFactory(@"\App_Data\data.json");
+            return this.View(productFactory.GetSingleProduct(id));
         }
     }
 }
